@@ -1,1 +1,4 @@
 assessment/templates/*/*.html
+data/*.csv
+data/*.xml
+data/*.catpool
