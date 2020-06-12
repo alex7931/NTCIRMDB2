@@ -35,7 +35,7 @@ class User(Document):
     username = StringField(unique=True, required=True)
     password = StringField(required=True)
     email = EmailField(required=True)
-    sex = StringField(choices=sex_choices)
+    # sex = StringField(choices=sex_choices)
     name = StringField(required=True)
     age = IntField(required=True)
     # search_frequency = StringField(required=True, choices=search_frequency_choices)

@@ -60,7 +60,7 @@ def signup(request):
             user.username = form.cleaned_data['username']
             user.password = form.cleaned_data['password']
             user.email = form.cleaned_data['email']
-            user.sex = form.cleaned_data['sex']
+            # user.sex = form.cleaned_data['sex']
             #user.class_no = form.cleaned_data['class_no']
             user.name = form.cleaned_data['name']
             user.age = form.cleaned_data['age']
@@ -109,8 +109,8 @@ def edit_info(user, request):
     form = EditInfoForm(
         {
             'email': user.email,
-            'sex': user.sex,
-            'class_no': user.class_no,
+            # 'sex': user.sex,
+            # 'class_no': user.class_no,
             'age': user.age
         })
     error_message = None
@@ -119,8 +119,8 @@ def edit_info(user, request):
         form = EditInfoForm(request.POST)
         if form.is_valid():
             user.email = form.cleaned_data['email']
-            user.sex = form.cleaned_data['sex']
-            user.class_no = form.cleaned_data['class_no']
+            # user.sex = form.cleaned_data['sex']
+            # user.class_no = form.cleaned_data['class_no']
             user.age = form.cleaned_data['age']
             user.save()
             return HttpResponseRedirect('/user/info/')

@@ -3,11 +3,11 @@
 
 from django import forms
 
-sex_choices = (
-    ('sex', u'Gender'),
-    ('male', u'Male'),
-    ('female', u'Female'),
-)
+# sex_choices = (
+    # ('sex', u'Gender'),
+    # ('male', u'Male'),
+    # ('female', u'Female'),
+# )
 
 class LoginForm(forms.Form):
     username = forms.CharField(
@@ -72,16 +72,16 @@ class SignupForm(forms.Form):
             }
         )
     )
-    sex = forms.ChoiceField(
-        required=True,
-        choices=sex_choices,
-        label=u'gender',
-        widget=forms.Select(
-            attrs={
-                'class': 'select2-container form-control select select-primary',
-            }
-        )
-    )
+    # sex = forms.ChoiceField(
+    #     required=True,
+    #     choices=sex_choices,
+    #     label=u'gender',
+    #     widget=forms.Select(
+    #         attrs={
+    #             'class': 'select2-container form-control select select-primary',
+    #         }
+    #     )
+    # )
     # search_frequency = forms.ChoiceField(
     #     required=True,
     #     choices=search_frequency_choices,
@@ -139,15 +139,15 @@ class EditInfoForm(forms.Form):
             }
         )
     )
-    sex = forms.ChoiceField(
-        required=True,
-        choices=sex_choices,
-        widget=forms.Select(
-            attrs={
-                'class': 'select2-container form-control select select-primary'
-            }
-        )
-    )
+    # sex = forms.ChoiceField(
+    #     required=True,
+    #     choices=sex_choices,
+    #     widget=forms.Select(
+    #         attrs={
+    #             'class': 'select2-container form-control select select-primary'
+    #         }
+    #     )
+    # )
 
     age = forms.IntegerField(
         required=True,
