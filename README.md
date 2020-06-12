@@ -1,6 +1,6 @@
-# Assesment tool PLY for NTCIR WWW tasks 
+# Assesment tool PLY for NTCIR WWW tasks
 
-Developed by Yimeng Fan, Lingtao Li, Peng Xiao, mentained by Sijie Tao in RSL(Real Sakai Lab) of Waseda University.
+Developed by Yimeng Fan, Lingtao Li, Peng Xiao, maintained by Sijie Tao in RSL(Real Sakai Lab) of Waseda University.
 
 ## Requirements
 
@@ -27,9 +27,34 @@ $ python3 insertToDB.py
 $ python2 manage.py runserver 0.0.0.0:8000
 ```
 
-### Obtain assessment progress report
+### Obtain assessment progress report for each assessor
 
 ```
 $ cd scripts
 $ python3 exportProgress.py
+```
+
+### Obtain assessment results for each document
+
+```
+$ cd scripts
+$ python3 exportWWW2.py
+# or
+$ python3 exportWWW1Addition.py
+```
+
+### Obain reports of assessor judgement bahavior
+
+#### Get assessor history
+
+```
+$ cd scripts
+$ python3 exportUserHistory.py
+```
+
+#### Obain a report from history file
+
+```
+$ cd scripts
+$ python3 dataProcess.py
 ```
