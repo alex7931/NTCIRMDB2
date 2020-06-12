@@ -16,7 +16,7 @@ import time
 def assessment(user,request):
     if user.username== 'administrator':
         user_name=list(usrlist.objects.values_list('usrid'))
-        user_name.remove('test01')
+        # user_name.remove('test01')
         all_multilist=[]
         for i in user_name:
             user_multilist = []
