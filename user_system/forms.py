@@ -36,7 +36,7 @@ class SignupForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control login-field',
-                'placeholder': u'username',
+                'placeholder': u'username (e.g.: user01, user02, etc.)',
             }
         )
     )
@@ -100,7 +100,7 @@ class SignupForm(forms.Form):
         widget=forms.TextInput(
             attrs={
                 'class': 'form-control login-field',
-                'placeholder': u'Your Name',
+                'placeholder': u'your name',
             }
         )
     )
@@ -110,7 +110,7 @@ class SignupForm(forms.Form):
         widget=forms.NumberInput(
             attrs={
                 'class': 'form-control login-field',
-                'placeholder': u'Age',
+                'placeholder': u'age',
             }
         )
     )
