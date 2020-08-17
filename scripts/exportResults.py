@@ -10,7 +10,7 @@ res=["<topicID>,<docID>"]
 labelDict = {"NONREL":"0","ERROR":"-1","REL":"1","H.REL":"2","NOT ASSIGNED":"NA"}
 
 for i in range(1, 25):
-    label = "<Label_" + str(i) + ">"
+    label = ",<Label_" + str(i) + ">"
     res[0] += label
 res[0] += "\n"
 print("header:", res[0])
