@@ -117,6 +117,7 @@ for userid, user_logs in user_history.items():
             poolType = "rand"
             tid = str(topicid).rjust(4,"0")
 
+        # in case of there wasn't any relevant document
         if not TF1RH:
             TF1RH = "NA"
         if not TF1H:
