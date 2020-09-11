@@ -76,21 +76,34 @@ for userid in user_history.keys():
                     labeled_doc.add(record["docid"])
                 else:
                     NREJ += 1
+
                 if post_pool.__contains__(record["docid"]):
                     judge_time=int((datetime.strptime(record["time"],"%Y-%m-%d %H:%M:%S")-post_pool[record["docid"]]).total_seconds())
-
                 elif idx+1 < len(history) and history[idx+1]["docid"] == record["docid"]:
                     judge_time=int((datetime.strptime(history[idx+1]["time"],"%Y-%m-%d %H:%M:%S")-datetime.strptime(record["time"],"%Y-%m-%d %H:%M:%S")).total_seconds())
                 else:
                     judge_time=0
-                if judge_time<=60*3:
+
+                # if judge time is longer than 3 min (180s)
+                # then the time is not included and set to "NA"
+                threshold = 180
+                if judge_time <= threshold:
                     time_list.append(judge_time)
                 if not TJ1D:
-                    TJ1D = judge_time
+                    if judge_time <= threshold:
+                        TJ1D = judge_time
+                    else:
+                        TJ1D = "NA"
                 if not TF1RH and (record["val"]=="REL" or record["val"]=="H.REL"):
-                    TF1RH = judge_time
+                    if judge_time <= threshold:
+                        TF1RH = judge_time
+                    else:
+                        TF1RH = "NA"
                 if not TF1H and record["val"]=="H.REL":
-                    TF1H = judge_time
+                    if judge_time <= threshold:
+                        TF1H = judge_time
+                    else:
+                        TF1H = "NA"
         ATBJ = sum(time_list)*1.0/len(time_list)
         if len(str(topicid))==5:
             poolType = "sort"
