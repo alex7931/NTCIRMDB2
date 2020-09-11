@@ -39,27 +39,29 @@ for userid, topics in users.items():
     user_history[userid] = user_logs
 
 
-#Time to judge the first document;
-TJ1D_r = []
-TJ1D_p = []
-#Time to find the first Relevant or Highly relevant document;
-TF1RH_r = []
-TF1RH_p = []
-#Time to find the first Highly relevant document;
-TF1H_r = []
-TF1H_p = []
-#Average time between judging two documents;
-ATBJ_r = []
-ATBJ_p = []
+# Time to judge the first document;
+# TJ1D
+
+# Time to find the first Relevant or Highly relevant document;
+# TF1RH
+
+# Time to find the first Highly relevant document;
+# TF1H
+
+# Average time between judging two documents;
+# ATBJ
+
 # Number of times the label of a judged document is corrected to another label.
-NREJ_r = []
-NREJ_p = []
-res=["topicid,userid,TJ1D,TF1RH,TF1H,ATBJ,NREJ\n"]
-for userid in user_history.keys():
-    temp = user_history[userid]
-    for topicid in temp.keys():
+# NREJ
+
+# headers
+res=["topicID,assessorID,poolType,TJ1D,TF1RH,TF1H,ATBJ,NREJ\n"]
+
+for userid, user_logs in user_history.items():
+
+    for topicid, history in user_logs.items():
+        
         labeled_doc = set()
-        history = temp[topicid]
         previousTime = None
         TJ1D = None
         TF1RH = None
@@ -67,6 +69,7 @@ for userid in user_history.keys():
         NREJ = 0
         time_list =[]
         post_pool={}
+
         for idx in range(len(history)):
             record = history[idx]
             if record["val"] == "post":
@@ -104,25 +107,23 @@ for userid in user_history.keys():
                         TF1H = judge_time
                     else:
                         TF1H = "NA"
+
         ATBJ = sum(time_list)*1.0/len(time_list)
+
         if len(str(topicid))==5:
             poolType = "sort"
             tid=str(topicid)[1:]
-            TJ1D_r.append(TJ1D)
-            TF1RH_r.append(TF1RH)
-            TF1H_r.append(TF1H)
-            NREJ_r.append(NREJ)
-            ATBJ_r.append(ATBJ)
         else:
             poolType = "rand"
             tid = str(topicid).rjust(4,"0")
-            TJ1D_p.append(TJ1D)
-            TF1RH_p.append(TF1RH)
-            TF1H_p.append(TF1H)
-            NREJ_p.append(NREJ)
-            ATBJ_p.append(ATBJ)
+
+        if not TF1RH:
+            TF1RH = "NA"
+        if not TF1H:
+            TF1H = "NA"
 
         res.append(",".join([tid,userid,poolType,str(TJ1D),str(TF1RH),str(TF1H),"%.2f" %ATBJ,str(NREJ)])+"\n")
-out=open("user_history_results.txt","w",encoding="utf8")
+
+out = open("user_history_results.txt","w",encoding="utf8")
 out.writelines(res)
 out.close()
